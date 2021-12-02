@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>維四組報價表單</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- 連結Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
+    </script>
+    <!-- CSS 格式修改 -->
+    <style>
+        .container-contact {
+            padding: 20px;
+            text-align: center;
+            color: white;
+            background-color: rgb(42, 165, 159);
+            width: 100%;
+        }
+        
+        .container-contact h3 {
+            font-size: 30px;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .btn {
+            width: 100%;
+            font-size: 20px;
+            margin: 20px 0px 20px 0px;
+            background-color: rgb(6, 117, 119);
+            color: rgb(255, 255, 255);
+            border-radius: 20px;
+            transition: 1s;
+        }
+        
+        .btn:hover {
+            background-color: rgb(178, 224, 84);
+            color: black;
+        }
+      
+        .form-select{
+            margin-top:10px;
+        }
+        input {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-contact">
+        <h3>維四組--報價表單</h3>
+
+        <div class="row">
+            <!-- 第一欄位 -->
+            <div class="col-sm-4">
+            
+            </div>
+            <!-- 第二欄位 -->
+            <div class="col-sm-4">
+                <form id="myForm">
+                    <div class="row">
+                        <!-- 第一個輸入 - 工號 -->
+                        <div class="col-sm-4 form-group"  >
+                            <select class="form-select" aria-label="Default select example" iD="name" name="name" type="text">
+                                <option selected>選擇工號</option>
+                                <option value="1561">1561</option>
+                                <option value="2201">2201</option>
+                                <option value="2555">2555</option>
+                                <option value="2994">2994</option>
+                                <option value="3017">3017</option>
+                                <option value="3395">3395</option>
+                                <option value="3952">3952</option>
+                                <option value="4090">4090</option>
+                                <option value="4712">4712</option>
+                                <option value="4309">4309</option>
+                                <option value="4361">4361</option>
+                                
+                            </select>
+                        </div>
+                        <!-- 第二個輸入 - 合約號機 -->
+                        <div class="col-sm-8 form-group">
+                            <input class="form-control" id="name1" name="name1" placeholder="合約號機:CT1234-1" type="text" required>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <!-- 第三個輸入 -報價名稱 -->
+                        <div class="col-sm-9 form-group">
+                            <input class="form-control" id="name2" name="name2" placeholder="報價名稱" type="text" required>
+                        </div>
+                        <!-- 第四個輸入 - 號機-->
+                        <div class="col-sm-3 form-group">
+                            <input class="form-control" id="name3" name="name3" placeholder="號機" type="text" required>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- 第三個輸入 - 留言 -->
+                    <textarea class="form-control" id="comments" name="comments" placeholder="如需傳真,請註明業主姓名,電話,傳真.如有其他事項亦可填入" rows="5"></textarea>
+                    <div class="row">
+                        <div class="col-sm-12 form-group">
+                            <button class="btn " type="submit" id="submitButton">送出Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- 第三欄位 -->
+            <div class="col-sm-4">
+
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript程式 -->
+    <script>
+        // 抓輸入的值
+
+        function getValues() {
+
+            var name = document.getElementById("name");
+            var name1 = document.getElementById("name1");
+            var name2 = document.getElementById("name2");
+            var name3 = document.getElementById("name3");
+            var comments = document.getElementById("comments");
+
+            var rowData = {
+                name: name.value,
+                name1: name1.value,
+                name2: name2.value,
+                name3: name3.value,
+                comments: comments.value
+            };
+
+            // 上傳資料
+            google.script.run.addData(rowData);
+            // 清除表單上的資料
+            document.getElementById("myForm").reset();
+            // 完成後的訊息
+            alert("我已收到你的報價需求，我會儘快處理您的報價，謝謝！");
+        }
+
+        document.getElementById("submitButton").addEventListener("click", getValues);
+    </script>
+</body>
+
+</html>
